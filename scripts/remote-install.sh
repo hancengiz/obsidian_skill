@@ -4,15 +4,15 @@
 # One-command installation from GitHub
 #
 # Usage:
-#   curl -fsSL https://raw.githubusercontent.com/YOUR_USERNAME/obsidian_skill/main/scripts/remote-install.sh | bash
-#   curl -fsSL https://raw.githubusercontent.com/YOUR_USERNAME/obsidian_skill/main/scripts/remote-install.sh | bash -s -- --user
-#   curl -fsSL https://raw.githubusercontent.com/YOUR_USERNAME/obsidian_skill/main/scripts/remote-install.sh | bash -s -- --project
-#   curl -fsSL https://raw.githubusercontent.com/YOUR_USERNAME/obsidian_skill/main/scripts/remote-install.sh | bash -s -- --desktop
+#   curl -fsSL https://raw.githubusercontent.com/hancengiz/obsidian-vault-skill/main/scripts/remote-install.sh | bash
+#   curl -fsSL https://raw.githubusercontent.com/hancengiz/obsidian-vault-skill/main/scripts/remote-install.sh | bash -s -- --user
+#   curl -fsSL https://raw.githubusercontent.com/hancengiz/obsidian-vault-skill/main/scripts/remote-install.sh | bash -s -- --project
+#   curl -fsSL https://raw.githubusercontent.com/hancengiz/obsidian-vault-skill/main/scripts/remote-install.sh | bash -s -- --desktop
 
 set -e  # Exit on error
 
 # Configuration
-GITHUB_RAW_URL="https://raw.githubusercontent.com/YOUR_USERNAME/obsidian_skill/main"
+GITHUB_RAW_URL="https://raw.githubusercontent.com/hancengiz/obsidian-vault-skill/main"
 MODE="remote"
 TEMP_DIR=$(mktemp -d)
 trap "rm -rf $TEMP_DIR" EXIT
@@ -151,7 +151,7 @@ install_claude_desktop() {
     echo "     - README.md"
     echo ""
     echo "  📚 Documentation:"
-    echo "     View full docs at: https://github.com/YOUR_USERNAME/obsidian_skill/tree/main/docs"
+    echo "     View full docs at: https://github.com/hancengiz/obsidian-vault-skill/tree/main/docs"
     echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
     echo ""
     echo -e "${BLUE}Upload Instructions:${NC}"

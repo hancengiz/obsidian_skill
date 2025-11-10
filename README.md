@@ -10,25 +10,23 @@ A Claude Code skill that enables seamless interaction with your Obsidian vault t
 
 **Claude Code - User Level** (installs to `~/.claude/skills/`):
 ```bash
-curl -fsSL https://raw.githubusercontent.com/YOUR_USERNAME/obsidian-vault-skill/main/scripts/remote-install.sh | bash -s -- --user
+curl -fsSL https://raw.githubusercontent.com/hancengiz/obsidian-vault-skill/main/scripts/remote-install.sh | bash -s -- --user
 ```
 
 **Claude Code - Project Level** (installs to `./.claude/skills/`):
 ```bash
-curl -fsSL https://raw.githubusercontent.com/YOUR_USERNAME/obsidian-vault-skill/main/scripts/remote-install.sh | bash -s -- --project
+curl -fsSL https://raw.githubusercontent.com/hancengiz/obsidian-vault-skill/main/scripts/remote-install.sh | bash -s -- --project
 ```
 
 **Claude Desktop/Web** (downloads zip to `~/Downloads/`):
 ```bash
-curl -fsSL https://raw.githubusercontent.com/YOUR_USERNAME/obsidian-vault-skill/main/scripts/remote-install.sh | bash -s -- --desktop
+curl -fsSL https://raw.githubusercontent.com/hancengiz/obsidian-vault-skill/main/scripts/remote-install.sh | bash -s -- --desktop
 ```
 
 **Interactive Mode** (choose during installation):
 ```bash
-curl -fsSL https://raw.githubusercontent.com/YOUR_USERNAME/obsidian-vault-skill/main/scripts/remote-install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/hancengiz/obsidian-vault-skill/main/scripts/remote-install.sh | bash
 ```
-
-> **Note**: Replace `YOUR_USERNAME` with your GitHub username once you push this repository.
 
 ## Overview
 
@@ -149,15 +147,15 @@ Choose the installation method based on your platform:
 **Method 1: Remote Installation (Fastest)**:
 ```bash
 # User-level (recommended)
-curl -fsSL https://raw.githubusercontent.com/YOUR_USERNAME/obsidian-vault-skill/main/scripts/remote-install.sh | bash -s -- --user
+curl -fsSL https://raw.githubusercontent.com/hancengiz/obsidian-vault-skill/main/scripts/remote-install.sh | bash -s -- --user
 
 # Project-level
-curl -fsSL https://raw.githubusercontent.com/YOUR_USERNAME/obsidian-vault-skill/main/scripts/remote-install.sh | bash -s -- --project
+curl -fsSL https://raw.githubusercontent.com/hancengiz/obsidian-vault-skill/main/scripts/remote-install.sh | bash -s -- --project
 ```
 
 **Method 2: Clone + Run Installer**:
 ```bash
-git clone https://github.com/YOUR_USERNAME/obsidian-vault-skill.git
+git clone https://github.com/hancengiz/obsidian-vault-skill.git
 cd obsidian-vault-skill
 ./scripts/local-install.sh
 ```
@@ -165,7 +163,7 @@ cd obsidian-vault-skill
 **Method 3: Manual Installation**:
 ```bash
 # Clone and copy only essential files
-git clone https://github.com/your-username/obsidian-vault-skill.git
+git clone https://github.com/hancengiz/obsidian-vault-skill.git
 mkdir -p ~/.claude/skills/obsidian-vault
 cp obsidian-vault-skill/SKILL.md ~/.claude/skills/obsidian-vault/
 cp obsidian-vault-skill/README.md ~/.claude/skills/obsidian-vault/
@@ -181,7 +179,7 @@ cp obsidian-vault-skill/README.md your-project/.claude/skills/obsidian-vault/
 
 The skill will be automatically discovered by Claude Code when you start a new conversation.
 
-> **Note**: Installations only include SKILL.md and README.md. Full documentation is available at https://github.com/YOUR_USERNAME/obsidian-vault-skill/tree/main/docs
+> **Note**: Installations only include SKILL.md and README.md. Full documentation is available at https://github.com/hancengiz/obsidian-vault-skill/tree/main/docs
 
 ---
 
@@ -189,13 +187,13 @@ The skill will be automatically discovered by Claude Code when you start a new c
 
 **Method 1: Remote Download (Fastest)**:
 ```bash
-curl -fsSL https://raw.githubusercontent.com/YOUR_USERNAME/obsidian-vault-skill/main/scripts/remote-install.sh | bash -s -- --desktop
+curl -fsSL https://raw.githubusercontent.com/hancengiz/obsidian-vault-skill/main/scripts/remote-install.sh | bash -s -- --desktop
 ```
 This downloads `obsidian-vault-skill.zip` to `~/Downloads/`.
 
 **Method 2: Clone + Build**:
 ```bash
-git clone https://github.com/YOUR_USERNAME/obsidian-vault-skill.git
+git clone https://github.com/hancengiz/obsidian-vault-skill.git
 cd obsidian-vault-skill
 ./scripts/local-create-zip.sh
 ```
@@ -219,7 +217,7 @@ rm -rf obsidian-vault-skill-pkg
 
 **Requirements**: Pro, Max, Team, or Enterprise plan with code execution enabled
 
-> **Note**: The zip file only contains SKILL.md and README.md. Full documentation is available at https://github.com/YOUR_USERNAME/obsidian-vault-skill/tree/main/docs
+> **Note**: The zip file only contains SKILL.md and README.md. Full documentation is available at https://github.com/hancengiz/obsidian-vault-skill/tree/main/docs
 
 ---
 
@@ -396,7 +394,7 @@ If the REST API doesn't fit your workflow, consider these alternatives:
 
 ### Missing Documentation
 - Documentation (docs/ folder) is not included in skill installations
-- Access full docs at: https://github.com/YOUR_USERNAME/obsidian-vault-skill/tree/main/docs
+- Access full docs at: https://github.com/hancengiz/obsidian-vault-skill/tree/main/docs
 - OpenAPI spec, ADRs, and endpoint guides available in GitHub repo
 
 ## Development
@@ -483,4 +481,4 @@ MIT License - See LICENSE file for details
 
 ---
 
-**Built with Claude Code Skills** | [Contribute](https://github.com/your-repo) | [Report Issues](https://github.com/your-repo/issues)
+**Built with Claude Code Skills** | [Contribute](https://github.com/hancengiz/obsidian-vault-skill) | [Report Issues](https://github.com/hancengiz/obsidian-vault-skill/issues)

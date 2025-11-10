@@ -67,7 +67,7 @@ echo "     - SKILL.md"
 echo "     - README.md"
 echo ""
 echo "  📚 Documentation:"
-echo "     View full docs at: https://github.com/YOUR_USERNAME/obsidian_skill/tree/main/docs"
+echo "     View full docs at: https://github.com/hancengiz/obsidian-vault-skill/tree/main/docs"
 echo ""
 
 print_section "🎯 Installation Instructions:"
