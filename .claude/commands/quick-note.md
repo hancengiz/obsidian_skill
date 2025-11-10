@@ -81,77 +81,36 @@ Good progress on the installer script fixes today.
 
 ---
 
-## Implementation Details
+## Implementation
 
-### Creating Daily Note (if needed)
+### Step 1: Get or Create Daily Note
+Use the **Obsidian Vault Skill** to check if today's daily note exists:
 
-```python
-import os
-import requests
-from datetime import datetime
-
-api_key = os.getenv('OBSIDIAN_SKILL_API_KEY')
-base_url = os.getenv('OBSIDIAN_SKILL_API_URL', 'https://localhost:27124')
-headers = {'Authorization': f'Bearer {api_key}'}
-
-today = datetime.now().strftime("%Y-%m-%d")
-year_month = datetime.now().strftime("%Y-%m")
-daily_note_content = f"""---
-title: Daily Note - {today}
-date: {today}
-tags:
-  - daily
-  - {year_month}
-type: daily
----
-
-# {today}
-
-## Quick Notes
-
-## Tasks
-
-## Events
-
-## Reflections
-"""
-
-# Create daily note if it doesn't exist
-response = requests.put(
-    f'{base_url}/vault/Daily/{today}.md',
-    headers=headers,
-    data=daily_note_content,
-    verify=False,
-    timeout=10
-)
+```
+request: Get or create Daily/[YYYY-MM-DD].md
+If it doesn't exist, create it with the structure shown above.
 ```
 
-### Appending Quick Note (PATCH)
+### Step 2: Append Quick Note
+Use the skill's PATCH operation to append to the "Quick Notes" section:
 
-```python
-timestamp = datetime.now().strftime("%H:%M")
-note_text = f"- **{timestamp}** - {content}"
-
-# Append to Quick Notes section
-response = requests.patch(
-    f'{base_url}/vault/Daily/{today}.md',
-    headers={
-        **headers,
-        'Operation': 'append',
-        'Target-Type': 'heading',
-        'Target': 'Quick Notes',
-        'Content-Type': 'text/markdown'
-    },
-    data=note_text,
-    verify=False,
-    timeout=10
-)
-
-if response.status_code == 200:
-    print(f"✓ Quick note captured at {timestamp}")
-else:
-    print(f"✗ Error: {response.status_code}")
 ```
+request: Append to Daily/[YYYY-MM-DD].md
+Target: Quick Notes heading
+Content: - **[HH:MM]** - [Your note content]
+```
+
+The skill will:
+- Get current time (HH:MM format)
+- Append to the "Quick Notes" section under the appropriate heading
+- Maintain the daily note structure
+- Preserve existing content
+
+### Step 3: Confirm
+The skill will return confirmation showing:
+- ✓ Timestamp added
+- ✓ Content appended
+- ✓ Daily note path
 
 ---
 

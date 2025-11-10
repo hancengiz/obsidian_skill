@@ -80,34 +80,29 @@ I had an insight about using Claude Code for Obsidian automation. This could ena
 
 ---
 
-## Implementation Details
+## Implementation
 
-### Using Obsidian Skill
+### Step 1: Format the Content
+Create the complete note with YAML frontmatter using the structure shown above.
 
-When you have the note content ready, use the Obsidian skill to create it:
+### Step 2: Use the Obsidian Skill
+Invoke the **Obsidian Vault Skill** to create the file:
 
-```python
-import os
-import requests
-
-api_key = os.getenv('OBSIDIAN_SKILL_API_KEY')
-base_url = os.getenv('OBSIDIAN_SKILL_API_URL', 'https://localhost:27124')
-headers = {'Authorization': f'Bearer {api_key}'}
-
-# Create idea note
-response = requests.put(
-    f'{base_url}/vault/Ideas/Claude-Code-Obsidian-Automation.md',
-    headers=headers,
-    data=note_content,
-    verify=False,
-    timeout=10
-)
-
-if response.status_code == 201:
-    print("✓ Idea captured successfully!")
-else:
-    print(f"✗ Error: {response.status_code}")
 ```
+request: Create a new file at Ideas/[filename].md with the following content:
+[Your complete note with frontmatter]
+```
+
+The skill will:
+- Take the path: `Ideas/[filename].md`
+- Write the complete note content with frontmatter
+- Create the file in your Obsidian vault via the Local REST API
+
+### Step 3: Confirm
+The skill will return success confirmation showing:
+- ✓ File path
+- ✓ File size
+- ✓ Location in vault
 
 ---
 
