@@ -87,7 +87,7 @@ install_to_user_level() {
     echo "     - README.md"
     echo ""
     echo "  📚 Documentation:"
-    echo "     View full docs at: https://github.com/YOUR_USERNAME/obsidian_skill/tree/main/docs"
+    echo "     View full docs at: https://github.com/hancengiz/obsidian-vault-skill/tree/main/docs"
     echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
     echo ""
 }
@@ -120,7 +120,7 @@ install_to_project_level() {
     echo "     - README.md"
     echo ""
     echo "  📚 Documentation:"
-    echo "     View full docs at: https://github.com/YOUR_USERNAME/obsidian_skill/tree/main/docs"
+    echo "     View full docs at: https://github.com/hancengiz/obsidian-vault-skill/tree/main/docs"
     echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
     echo ""
 
