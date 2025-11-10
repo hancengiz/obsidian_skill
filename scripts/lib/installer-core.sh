@@ -220,7 +220,12 @@ install_commands_user_level() {
 
     for cmd in "${commands[@]}"; do
         echo -e "${GREEN}  ↓${NC} Installing $cmd..."
-        copy_or_download ".claude/commands/$cmd" "$commands_dir/$cmd" || echo -e "${YELLOW}⚠️  Warning: $cmd not found${NC}"
+        if [ "$MODE" = "local" ]; then
+            cp "$SOURCE_DIR/.claude/commands/$cmd" "$commands_dir/$cmd" 2>/dev/null || echo -e "${YELLOW}⚠️  Warning: $cmd not found${NC}"
+        else
+            # Remote mode - use download_file
+            download_file ".claude/commands/$cmd" "$commands_dir/$cmd" 2>/dev/null || echo -e "${YELLOW}⚠️  Warning: $cmd not found${NC}"
+        fi
     done
 
     echo ""
@@ -249,7 +254,12 @@ install_commands_project_level() {
 
     for cmd in "${commands[@]}"; do
         echo -e "${GREEN}  ↓${NC} Installing $cmd..."
-        copy_or_download ".claude/commands/$cmd" "$commands_dir/$cmd" || echo -e "${YELLOW}⚠️  Warning: $cmd not found${NC}"
+        if [ "$MODE" = "local" ]; then
+            cp "$SOURCE_DIR/.claude/commands/$cmd" "$commands_dir/$cmd" 2>/dev/null || echo -e "${YELLOW}⚠️  Warning: $cmd not found${NC}"
+        else
+            # Remote mode - use download_file
+            download_file ".claude/commands/$cmd" "$commands_dir/$cmd" 2>/dev/null || echo -e "${YELLOW}⚠️  Warning: $cmd not found${NC}"
+        fi
     done
 
     echo ""
