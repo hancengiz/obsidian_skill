@@ -4,6 +4,32 @@ A Claude Code skill that enables seamless interaction with your Obsidian vault t
 
 **Works with:** Claude Code | Claude Desktop | claude.ai (Web)
 
+## Quick Install
+
+### One-Line Installation (Recommended)
+
+**Claude Code - User Level** (installs to `~/.claude/skills/`):
+```bash
+curl -fsSL https://raw.githubusercontent.com/YOUR_USERNAME/obsidian_skill/main/remote-install.sh | bash -s -- --user
+```
+
+**Claude Code - Project Level** (installs to `./.claude/skills/`):
+```bash
+curl -fsSL https://raw.githubusercontent.com/YOUR_USERNAME/obsidian_skill/main/remote-install.sh | bash -s -- --project
+```
+
+**Claude Desktop/Web** (downloads zip to `~/Downloads/`):
+```bash
+curl -fsSL https://raw.githubusercontent.com/YOUR_USERNAME/obsidian_skill/main/remote-install.sh | bash -s -- --desktop
+```
+
+**Interactive Mode** (choose during installation):
+```bash
+curl -fsSL https://raw.githubusercontent.com/YOUR_USERNAME/obsidian_skill/main/remote-install.sh | bash
+```
+
+> **Note**: Replace `YOUR_USERNAME` with your GitHub username once you push this repository.
+
 ## Overview
 
 This skill equips Claude with the ability to interact with your Obsidian vault programmatically, enabling workflows like:
@@ -90,7 +116,13 @@ This provides user-level defaults that work across all projects without environm
 
 ```
 obsidian_skill/
-├── SKILL.md                      # Main skill definition
+├── SKILL.md                      # Main skill definition (required)
+├── README.md                     # This file - setup and usage guide
+├── remote-install.sh             # One-line remote installer (curl from GitHub)
+├── install-claude-code.sh        # Local installer for Claude Code
+├── create-zip.sh                 # Build script for Claude Desktop/Web
+├── CLAUDE.md                     # Developer instructions
+├── .gitignore
 ├── docs/
 │   ├── openapi.yaml              # Complete OpenAPI specification (31 endpoints)
 │   ├── api-endpoints.md          # All endpoints with use case scenarios
@@ -99,52 +131,90 @@ obsidian_skill/
 │   ├── ADR-002-destructive-operation-guardrails.md  # Architecture Decision: Safety guardrails
 │   ├── ADR-003-automatic-backup-system.md  # Architecture Decision: Automatic backups
 │   └── ADR-004-skill-md-design.md         # Architecture Decision: SKILL.md structure
-├── .gitignore
-└── README.md                     # This file
 ```
 
 ## Installation
 
-### For Claude Code
+> **Quick Install**: See [One-Line Installation](#one-line-installation-recommended) at the top of this README for the fastest method.
 
-**Option 1: User-Level (Recommended)**
+Choose the installation method based on your platform:
+
+### For Claude Code (CLI)
+
+**Method 1: Remote Installation (Fastest)**:
 ```bash
-# Clone this repository
-git clone https://github.com/your-username/obsidian_skill.git
+# User-level (recommended)
+curl -fsSL https://raw.githubusercontent.com/YOUR_USERNAME/obsidian_skill/main/remote-install.sh | bash -s -- --user
 
-# Copy skill to user skills directory
+# Project-level
+curl -fsSL https://raw.githubusercontent.com/YOUR_USERNAME/obsidian_skill/main/remote-install.sh | bash -s -- --project
+```
+
+**Method 2: Clone + Run Installer**:
+```bash
+git clone https://github.com/YOUR_USERNAME/obsidian_skill.git
+cd obsidian_skill
+./install-claude-code.sh
+```
+
+**Method 3: Manual Installation**:
+```bash
+# Clone and copy manually
+git clone https://github.com/your-username/obsidian_skill.git
 mkdir -p ~/.claude/skills
 cp -r obsidian_skill ~/.claude/skills/obsidian-vault
 ```
 
-**Option 2: Project-Level**
+**Project-Level Installation** (optional):
 ```bash
-# Copy skill to project skills directory
+# Install to specific project
 mkdir -p your-project/.claude/skills
 cp -r obsidian_skill your-project/.claude/skills/obsidian-vault
 ```
 
 The skill will be automatically discovered by Claude Code when you start a new conversation.
 
+---
+
 ### For Claude Desktop / claude.ai (Web)
 
-1. Create a zip file containing the skill directory:
-   ```bash
-   cd obsidian_skill
-   zip -r ../obsidian-vault-skill.zip .
-   ```
+**Method 1: Remote Download (Fastest)**:
+```bash
+curl -fsSL https://raw.githubusercontent.com/YOUR_USERNAME/obsidian_skill/main/remote-install.sh | bash -s -- --desktop
+```
+This downloads `obsidian-vault-skill.zip` to `~/Downloads/`.
 
-2. In Claude Desktop or claude.ai:
-   - Go to Settings → Capabilities
-   - Click "Upload skill"
-   - Select the `obsidian-vault-skill.zip` file
-   - Enable the skill
+**Method 2: Clone + Build**:
+```bash
+git clone https://github.com/YOUR_USERNAME/obsidian_skill.git
+cd obsidian_skill
+./create-zip.sh
+```
+
+**Method 3: Manual Build**:
+```bash
+cd obsidian_skill
+zip -r obsidian-vault-skill.zip obsidian-vault-skill/
+```
+
+**Upload to Claude**:
+1. Open Claude Desktop or go to https://claude.ai
+2. Click Settings → Capabilities
+3. Click "Upload skill"
+4. Select `obsidian-vault-skill.zip`
+5. Enable the skill
 
 **Requirements**: Pro, Max, Team, or Enterprise plan with code execution enabled
 
+---
+
 ### Verify Installation
 
-Ask Claude: "Can you search my Obsidian vault?" - The skill should activate automatically.
+After installation, test the skill by asking:
+- "Can you search my Obsidian vault?"
+- "Read my daily note"
+
+The skill should activate automatically when you mention Obsidian.
 
 ## Usage
 
