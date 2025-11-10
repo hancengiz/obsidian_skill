@@ -212,7 +212,7 @@ cp -r . ~/.claude/skills/obsidian-skill
 # For Claude Desktop: Create zip file
 # Note: Archive the skill directory itself, not its contents
 cd ..
-zip -r obsidian-skill.zip obsidian_skill/
+zip -r obsidian-vault-skill.zip obsidian-vault-skill/
 ```
 
 ### SKILL.md Requirements (Both Platforms)

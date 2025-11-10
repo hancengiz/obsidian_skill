@@ -6,25 +6,25 @@ Quick reference for all installation methods.
 
 ### Claude Code - User Level
 ```bash
-curl -fsSL https://raw.githubusercontent.com/YOUR_USERNAME/obsidian_skill/main/remote-install.sh | bash -s -- --user
+curl -fsSL https://raw.githubusercontent.com/YOUR_USERNAME/obsidian-vault-skill/main/scripts/remote-install.sh | bash -s -- --user
 ```
 Installs to: `~/.claude/skills/obsidian-vault/`
 
 ### Claude Code - Project Level
 ```bash
-curl -fsSL https://raw.githubusercontent.com/YOUR_USERNAME/obsidian_skill/main/remote-install.sh | bash -s -- --project
+curl -fsSL https://raw.githubusercontent.com/YOUR_USERNAME/obsidian-vault-skill/main/scripts/remote-install.sh | bash -s -- --project
 ```
 Installs to: `./.claude/skills/obsidian-vault/`
 
 ### Claude Desktop/Web
 ```bash
-curl -fsSL https://raw.githubusercontent.com/YOUR_USERNAME/obsidian_skill/main/remote-install.sh | bash -s -- --desktop
+curl -fsSL https://raw.githubusercontent.com/YOUR_USERNAME/obsidian-vault-skill/main/scripts/remote-install.sh | bash -s -- --desktop
 ```
 Downloads zip to: `~/Downloads/obsidian-vault-skill.zip`
 
 ### Interactive Mode
 ```bash
-curl -fsSL https://raw.githubusercontent.com/YOUR_USERNAME/obsidian_skill/main/remote-install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/YOUR_USERNAME/obsidian-vault-skill/main/scripts/remote-install.sh | bash
 ```
 Choose installation target during installation.
 
@@ -36,39 +36,43 @@ Choose installation target during installation.
 
 **For Claude Code**:
 ```bash
-git clone https://github.com/YOUR_USERNAME/obsidian_skill.git
-cd obsidian_skill
-./install-claude-code.sh
+git clone https://github.com/YOUR_USERNAME/obsidian-vault-skill.git
+cd obsidian-vault-skill
+./scripts/local-install.sh
 ```
 
 **For Claude Desktop/Web**:
 ```bash
-git clone https://github.com/YOUR_USERNAME/obsidian_skill.git
-cd obsidian_skill
-./create-zip.sh
+git clone https://github.com/YOUR_USERNAME/obsidian-vault-skill.git
+cd obsidian-vault-skill
+./scripts/local-create-zip.sh
 ```
 
 ### Method 2: Manual Installation
 
 **Claude Code - User Level**:
 ```bash
-git clone https://github.com/YOUR_USERNAME/obsidian_skill.git
-mkdir -p ~/.claude/skills
-cp -r obsidian_skill ~/.claude/skills/obsidian-vault
+git clone https://github.com/YOUR_USERNAME/obsidian-vault-skill.git
+mkdir -p ~/.claude/skills/obsidian-vault
+cp obsidian-vault-skill/SKILL.md ~/.claude/skills/obsidian-vault/
+cp obsidian-vault-skill/README.md ~/.claude/skills/obsidian-vault/
 ```
 
 **Claude Code - Project Level**:
 ```bash
-git clone https://github.com/YOUR_USERNAME/obsidian_skill.git
-mkdir -p ./.claude/skills
-cp -r obsidian_skill ./.claude/skills/obsidian-vault
+git clone https://github.com/YOUR_USERNAME/obsidian-vault-skill.git
+mkdir -p ./.claude/skills/obsidian-vault
+cp obsidian-vault-skill/SKILL.md ./.claude/skills/obsidian-vault/
+cp obsidian-vault-skill/README.md ./.claude/skills/obsidian-vault/
 ```
 
 **Claude Desktop/Web**:
 ```bash
-git clone https://github.com/YOUR_USERNAME/obsidian_skill.git
-cd obsidian_skill
-zip -r obsidian-vault-skill.zip obsidian-vault-skill/
+git clone https://github.com/YOUR_USERNAME/obsidian-vault-skill.git
+cd obsidian-vault-skill
+mkdir -p obsidian-vault-skill-pkg
+cp SKILL.md README.md obsidian-vault-skill-pkg/
+zip -r obsidian-vault-skill.zip obsidian-vault-skill-pkg/
 ```
 
 Then upload the zip file via Settings → Capabilities → Upload skill.
@@ -179,8 +183,8 @@ After uploading the zip file:
 
 ## 🆘 Need Help?
 
-- **Issues**: [GitHub Issues](https://github.com/YOUR_USERNAME/obsidian_skill/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/YOUR_USERNAME/obsidian_skill/discussions)
+- **Issues**: [GitHub Issues](https://github.com/YOUR_USERNAME/obsidian-vault-skill/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/YOUR_USERNAME/obsidian-vault-skill/discussions)
 - **Obsidian Forum**: [Obsidian Community](https://forum.obsidian.md/)
 
 ---
