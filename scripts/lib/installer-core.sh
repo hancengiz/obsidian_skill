@@ -90,6 +90,9 @@ install_to_user_level() {
     echo "     View full docs at: https://github.com/hancengiz/obsidian-vault-skill/tree/main/docs"
     echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
     echo ""
+
+    # Install commands to user level
+    install_commands_user_level
 }
 
 # Install to project-level Claude Code
@@ -123,6 +126,9 @@ install_to_project_level() {
     echo "     View full docs at: https://github.com/hancengiz/obsidian-vault-skill/tree/main/docs"
     echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
     echo ""
+
+    # Install commands to project level
+    install_commands_project_level
 
     echo -e "${YELLOW}💡 Tip:${NC} For project-level installation, create a .env file:"
     echo "   echo 'apiKey=your-api-key-here' > .env"
@@ -199,6 +205,64 @@ EOF
         echo ".env" >> .gitignore
         echo -e "${GREEN}✓${NC} Added .env to .gitignore"
     fi
+}
+
+# Install commands to user-level
+install_commands_user_level() {
+    echo -e "${GREEN}➜${NC} Installing commands to user level..."
+    echo ""
+
+    local commands_dir="$HOME/.claude/commands"
+    mkdir -p "$commands_dir"
+
+    # List of commands to install
+    local commands=("capture.md" "idea.md" "quick-note.md")
+
+    for cmd in "${commands[@]}"; do
+        echo -e "${GREEN}  ↓${NC} Installing $cmd..."
+        copy_or_download ".claude/commands/$cmd" "$commands_dir/$cmd" || echo -e "${YELLOW}⚠️  Warning: $cmd not found${NC}"
+    done
+
+    echo ""
+    echo -e "${GREEN}✓${NC} Commands installed successfully!"
+    echo ""
+    print_section "📍 Commands Installed:"
+    echo "     Location: $commands_dir"
+    echo ""
+    echo "  📝 Available commands:"
+    echo "     - /capture  - Smart router for idea and quick-note capture"
+    echo "     - /idea     - Capture ideas to Ideas/ folder"
+    echo "     - /quick-note - Append to daily note"
+    echo ""
+}
+
+# Install commands to project-level
+install_commands_project_level() {
+    echo -e "${GREEN}➜${NC} Installing commands to project level..."
+    echo ""
+
+    local commands_dir="./.claude/commands"
+    mkdir -p "$commands_dir"
+
+    # List of commands to install
+    local commands=("capture.md" "idea.md" "quick-note.md")
+
+    for cmd in "${commands[@]}"; do
+        echo -e "${GREEN}  ↓${NC} Installing $cmd..."
+        copy_or_download ".claude/commands/$cmd" "$commands_dir/$cmd" || echo -e "${YELLOW}⚠️  Warning: $cmd not found${NC}"
+    done
+
+    echo ""
+    echo -e "${GREEN}✓${NC} Commands installed successfully!"
+    echo ""
+    print_section "📍 Commands Installed:"
+    echo "     Location: $(pwd)/$commands_dir"
+    echo ""
+    echo "  📝 Available commands:"
+    echo "     - /capture  - Smart router for idea and quick-note capture"
+    echo "     - /idea     - Capture ideas to Ideas/ folder"
+    echo "     - /quick-note - Append to daily note"
+    echo ""
 }
 
 # Configure API key

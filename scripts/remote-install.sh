@@ -64,13 +64,20 @@ install_claude_desktop() {
 
     local temp_skill_dir="$TEMP_DIR/obsidian-vault-skill"
     mkdir -p "$temp_skill_dir"
+    mkdir -p "$temp_skill_dir/.claude/commands"
 
-    # Download only SKILL.md and README.md
+    # Download SKILL.md and README.md
     echo -e "${GREEN}  ↓${NC} Downloading SKILL.md..."
     download_file "SKILL.md" "$temp_skill_dir/SKILL.md"
 
     echo -e "${GREEN}  ↓${NC} Downloading README.md..."
     download_file "README.md" "$temp_skill_dir/README.md"
+
+    # Download commands
+    echo -e "${GREEN}  ↓${NC} Downloading commands..."
+    download_file ".claude/commands/capture.md" "$temp_skill_dir/.claude/commands/capture.md"
+    download_file ".claude/commands/idea.md" "$temp_skill_dir/.claude/commands/idea.md"
+    download_file ".claude/commands/quick-note.md" "$temp_skill_dir/.claude/commands/quick-note.md"
 
     # Create zip file
     echo -e "${GREEN}  📦${NC} Creating zip file..."
@@ -90,8 +97,12 @@ install_claude_desktop() {
     echo "     Location: ~/Downloads/"
     echo ""
     echo "  📄 Contents:"
-    echo "     - SKILL.md"
-    echo "     - README.md"
+    echo "     - SKILL.md (Skill definition)"
+    echo "     - README.md (Documentation)"
+    echo "     - .claude/commands/ (3 helper commands)"
+    echo "       ├── capture.md (Smart routing command)"
+    echo "       ├── idea.md (Idea capture command)"
+    echo "       └── quick-note.md (Daily note command)"
     echo ""
     echo "  📚 Documentation:"
     echo "     View full docs at: https://github.com/hancengiz/obsidian-vault-skill/tree/main/docs"
